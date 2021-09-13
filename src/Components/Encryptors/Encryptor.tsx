@@ -9,60 +9,42 @@ export const Encryptor: React.FC<Props> = (Props) => {
   const [encryptionInputClass, setEncryptionInputClass] = useState("encryption");
   const [decryptionInputClass, setDecryptionInputClass] = useState("decryption");
 
-  const handleEncryption = () => {
-    const word = ((document.getElementById("encryption")) as HTMLInputElement).value;
-    try{
-      const offset = parseInt(((document.getElementById("offset")) as HTMLInputElement).value);
+  const handlSubmit = (fromWhere: string, toWhere: string) => {
+    const word = ((document.getElementById(`${fromWhere}`)) as HTMLInputElement).value;
+    let offset;
+    if(hasOffset){
+      offset = parseInt(((document.getElementById("offset")) as HTMLInputElement).value);
 
-      if (hasOffset && offset < 1) {
-        ((document.getElementById("decryption")) as HTMLInputElement).value = "Offset can not be lower than 1.";
-        setDecryptionInputClass("decryption error");
+      if(isNaN(offset)){
+        ((document.getElementById(`${toWhere}`)) as HTMLInputElement).value = "Offset can not be lower than 1.";
+        if(fromWhere === "encryption") setDecryptionInputClass(`${toWhere} error`);
+        else setEncryptionInputClass(`${toWhere} error`);
+        return;
       }
-
-      return;
     }
-    catch{}
     
     let output;
 
     if(!isASCII(word)) {
       output="Some letters or simbols in your entered text are not found in the ASCII table, please only use letter and simbols that are from the ASCII table.";
-      
-      setDecryptionInputClass("decryption error");
+      if(fromWhere === "encryption") setDecryptionInputClass(`${toWhere} error`);
+      else setEncryptionInputClass(`${toWhere} error`);
     }
     else {
-      output = encryption(word);
-      setDecryptionInputClass("decryption");
-    }
-
-    ((document.getElementById("decryption")) as HTMLInputElement).value = output;
-  }
-
-  const handleDecryption = () => {
-    const word = ((document.getElementById("decryption")) as HTMLInputElement).value;
-    try{
-      const offset = parseInt(((document.getElementById("offset")) as HTMLInputElement).value);
-
-      if (hasOffset && offset < 1) {
-        ((document.getElementById("decryption")) as HTMLInputElement).value = "Offset can not be lower than 1.";
-        setEncryptionInputClass("encryption error");
+      if(hasOffset) {
+        if(fromWhere === "encryption") output = encryption(word, offset);
+        else output = decryption(word, offset);
+      }
+      else {
+        if(fromWhere === "encryption") output = encryption(word);
+        else output = decryption(word);
       }
 
-      return;
+      if(fromWhere === "encryption") setDecryptionInputClass(`${toWhere}`);
+      else setEncryptionInputClass(`${toWhere}`);      
     }
-    catch{}
-    let output;
 
-    if(!isASCII(word)) {
-      output="Some letters or simbols in your entered text are not found in the ASCII table, please only use letter and simbols that are from the ASCII table.";
-      setEncryptionInputClass("encryption error");
-    }
-    else{
-      output = decryption(word);
-      setEncryptionInputClass("encryption");
-    }
-    
-    ((document.getElementById("encryption")) as HTMLInputElement).value = output;
+    ((document.getElementById(`${toWhere}`)) as HTMLInputElement).value = output;
   }
 
   return(
@@ -77,12 +59,12 @@ export const Encryptor: React.FC<Props> = (Props) => {
       <div>
         <h2>Encryption</h2>
         <input className={encryptionInputClass} id="encryption" onChange={() => setEncryptionInputClass("encryption")} />
-        <button onClick={handleEncryption}>Encrypt</button>
+        <button onClick={() => handlSubmit("encryption", "decryption")}>Encrypt</button>
       </div>
       <div>
         <h2>Decryption</h2>
         <input className={decryptionInputClass} id="decryption" onChange={() => setDecryptionInputClass("decryption")} />
-        <button onClick={handleDecryption}>Decrypt</button>
+        <button onClick={() => handlSubmit("decryption", "encryption")}>Decrypt</button>
       </div>
     </div>
   );

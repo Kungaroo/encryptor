@@ -1,10 +1,11 @@
 export const caeserEncryption = (word: string, offset: number) => {
   let ans = "";
-  word = word.toLowerCase();
+  let charCode;
 
   for(let i=0;i<word.length;i++){
-    let charCode = word[i].charCodeAt(0)+offset;
+    charCode = word.charCodeAt(i)+offset;
 
+    while (charCode < 32) charCode += 127;
     while (charCode > 127) charCode -= 127;
 
     ans+=String.fromCharCode(charCode);    
@@ -15,10 +16,9 @@ export const caeserEncryption = (word: string, offset: number) => {
 
 export const atbashEncryption = (word: string) => {
   let ans = "";
-  word = word.toLowerCase();
 
   for(let i=0;i<word.length;i++){
-    ans+=String.fromCharCode(122-(word[i].charCodeAt(0)-97));
+    ans+=String.fromCharCode((127-(word.charCodeAt(i)))+32);
   };
 
   return ans;
