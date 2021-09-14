@@ -47,6 +47,11 @@ export const Encryptor: React.FC<Props> = (Props) => {
     ((document.getElementById(`${toWhere}`)) as HTMLInputElement).value = output;
   }
 
+  const handleClipboard = (fromWhere: string) => {
+    const text = ((document.getElementById(fromWhere)) as HTMLInputElement).value;
+    navigator.clipboard.writeText(text);
+  }
+
   return(
     <div>
       <h1>{name} algorithm</h1>
@@ -59,11 +64,13 @@ export const Encryptor: React.FC<Props> = (Props) => {
       <div>
         <h2>Encryption</h2>
         <input className={encryptionInputClass} id="encryption" onChange={() => setEncryptionInputClass("encryption")} />
+        <button onClick={() => handleClipboard("encryption")}>Copy to clipboard</button>
         <button onClick={() => handlSubmit("encryption", "decryption")}>Encrypt</button>
       </div>
       <div>
         <h2>Decryption</h2>
         <input className={decryptionInputClass} id="decryption" onChange={() => setDecryptionInputClass("decryption")} />
+        <button onClick={() => handleClipboard("decryption")}>Copy to clipboard</button>
         <button onClick={() => handlSubmit("decryption", "encryption")}>Decrypt</button>
       </div>
     </div>

@@ -1,12 +1,16 @@
+// avoid 0 - 32
+
 export const caeserDecryption = (word: string, offset: number) => {
   let ans = "";
-  let charCode;
+  let charCode: number;
   
+  offset = offset % 93;
+
   for(let i=0;i<word.length;i++){
     charCode = word.charCodeAt(i)-offset;
 
-    while (charCode < 0) charCode += 127;
-    while (charCode > 127) charCode -= 127;
+    if (charCode > 126) charCode = charCode - 126 + 32;
+    if (charCode < 33) charCode = charCode + 126 - 32;
 
     ans+=String.fromCharCode(charCode);
   };
@@ -18,7 +22,7 @@ export const atbashDecryption = (word: string) => {
   let ans = "";
 
   for(let i=0;i<word.length;i++){
-    ans+=String.fromCharCode((word[i].charCodeAt(0)+32));
+    ans+=String.fromCharCode(159 - (word.charCodeAt(i)));
   }
 
   return ans;
