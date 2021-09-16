@@ -10,10 +10,17 @@ const App: React.FC = () => {
   const options = ["Caeser", "Atbash"]
   const [index, setIndex] = useState(0);
 
+  const handleSelect = () => {
+    setIndex(((document.getElementById("cypher")) as HTMLSelectElement).selectedIndex);
+  }
+
   return (
     <div className="App">
       <h1>Encryptor</h1>
-      <button onClick={() => setIndex(index+1)}>change</button>
+      <select id="cypher" onChange={handleSelect}>
+        <option selected value="0">Caesers</option>
+        <option value="1">Atbash</option>
+      </select>
       <div className="Encryptions">
         {encryptions[index]}
       </div>
