@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Props from '../../PropsInterface';
+import Props from '../PropsInterface';
 import { isASCII } from "./Functions";
 import './Encryptor.css';
 

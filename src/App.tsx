@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Encryptor } from './Components/Encryptors/Encryptor';
-import { caeser, atbash } from './Components/Props/Props';
+import { Encryptor } from './Encryptor/Encryptor';
+import { caeser, atbash } from './Props';
 
 const App: React.FC = () => {
 

@@ -1,6 +1,6 @@
-import { caeserEncryption, atbashEncryption } from '../../Functions/EncryptionMethods';
-import { caeserDecryption, atbashDecryption } from '../../Functions/DecryptionMethods';
-import Props from '../../PropsInterface';
+import { caeserEncryption, atbashEncryption } from './Functions/EncryptionMethods';
+import { caeserDecryption, atbashDecryption } from './Functions/DecryptionMethods';
+import Props from './PropsInterface';
 
 export const caeser: Props = {
   name: "Caeser",
