@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Dropdown from './Components/Dropdown/Dropdown';
 import './App.css';
 import { Encryptor } from './Components/Encryptors/Encryptor';
 import { caeser, atbash } from './Components/Props/Props';
