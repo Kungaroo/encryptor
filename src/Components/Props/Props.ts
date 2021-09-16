@@ -6,17 +6,15 @@ export const caeser: Props = {
   name: "Caeser",
   encryption: caeserEncryption,
   decryption: caeserDecryption,
-  hasOffset: true
+  hasOffset: true,
+  hasKey: false
 }
 
 export const atbash: Props = {
   name: "Atbash",
   encryption: atbashEncryption,
   decryption: atbashDecryption,
-  hasOffset: false
+  hasOffset: false,
+  hasKey: false
 }
 
-// export const ROT13: Props = {
-//   name: "ROT13",
-//   encryption: 
-// }

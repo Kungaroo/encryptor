@@ -5,7 +5,7 @@ import './Encryptor.css';
 
 export const Encryptor: React.FC<Props> = (Props) => {
 
-  const { name, encryption, decryption, hasOffset } = Props;
+  const { name, encryption, decryption, hasOffset, hasKey } = Props;
   const [encryptionInputClass, setEncryptionInputClass] = useState("encryption");
   const [decryptionInputClass, setDecryptionInputClass] = useState("decryption");
 
@@ -59,6 +59,12 @@ export const Encryptor: React.FC<Props> = (Props) => {
         <div>
           <h2>What offset do you want?</h2>
           <input id="offset" defaultValue="1" />
+        </div>
+      }
+      {hasKey &&
+        <div>
+          <h2>What key do you want to encrypt/decrypt with?</h2>
+          <input id="key" />
         </div>
       }
       <div>
