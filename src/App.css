@@ -12,3 +12,19 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.title {
+  text-transform: uppercase;
+}
+
+.button {
+  margin-right: 0.4em;
+}
+
+.clipboard {
+  margin-right: 0px;
+}
+
+.input {
+  
+}

@@ -17,8 +17,11 @@ const App: React.FC = () => {
     <div className="App">
       <h1>Encryptor</h1>
       <select id="cypher" onChange={handleSelect}>
-        <option selected value="0">Caesers</option>
-        <option value="1">Atbash</option>
+        {options.map(option => {
+          return(
+            <option>{option}</option>
+          );
+        })}
       </select>
       <div className="Encryptions">
         {encryptions[index]}

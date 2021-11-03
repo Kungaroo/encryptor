@@ -70,14 +70,14 @@ export const Encryptor: React.FC<Props> = (Props) => {
       <div>
         <h2>Encryption</h2>
         <input className={encryptionInputClass} id="encryption" onChange={() => setEncryptionInputClass("encryption")} />
-        <button onClick={() => handleClipboard("encryption")}>Copy to clipboard</button>
-        <button onClick={() => handlSubmit("encryption", "decryption")}>Encrypt</button>
+        <button className="clipboard" onClick={() => handleClipboard("encryption")}>Copy to clipboard</button>
+        <button className="button" onClick={() => handlSubmit("encryption", "decryption")}>Encrypt</button>
       </div>
       <div>
         <h2>Decryption</h2>
         <input className={decryptionInputClass} id="decryption" onChange={() => setDecryptionInputClass("decryption")} />
-        <button onClick={() => handleClipboard("decryption")}>Copy to clipboard</button>
-        <button onClick={() => handlSubmit("decryption", "encryption")}>Decrypt</button>
+        <button className="clipboard" onClick={() => handleClipboard("decryption")}>Copy to clipboard</button>
+        <button className="button" onClick={() => handlSubmit("decryption", "encryption")}>Decrypt</button>
       </div>
     </div>
   );

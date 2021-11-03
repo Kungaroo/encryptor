@@ -21,9 +21,18 @@ export const caeserEncryption = (word: string, offset: number) => {
 export const atbashEncryption = (word: string) => {
   let ans = "";
 
-  for(let i=0;i<word.length;i++){
+  for (let i=0;i<word.length;i++) {
     ans+=String.fromCharCode((159-(word.charCodeAt(i))));
   };
 
   return ans;
 };
+
+export const keyEncryption = (word: string, key: string) => {
+  let ans = "";
+
+
+  for (let i=0; i<word.length; i++) {
+
+  }
+}
