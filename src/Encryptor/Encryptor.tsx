@@ -53,31 +53,35 @@ export const Encryptor: React.FC<Props> = (Props) => {
   }
 
   return(
-    <div>
-      <h1>{name} algorithm</h1>
+    <div className="encryptor">
+      <h2>{name} algorithm</h2>
       {hasOffset && 
         <div>
-          <h2>What offset do you want?</h2>
+          <h3>What offset do you want?</h3>
           <input id="offset" defaultValue="1" />
         </div>
       }
       {hasKey &&
         <div>
-          <h2>What key do you want to encrypt/decrypt with?</h2>
+          <h3>What key do you want to encrypt/decrypt with?</h3>
           <input id="key" />
         </div>
       }
-      <div>
-        <h2>Encryption</h2>
+      <div className="input">
+        <h3>Encryption</h3>
         <input className={encryptionInputClass} id="encryption" onChange={() => setEncryptionInputClass("encryption")} />
-        <button className="clipboard" onClick={() => handleClipboard("encryption")}>Copy to clipboard</button>
-        <button className="button" onClick={() => handlSubmit("encryption", "decryption")}>Encrypt</button>
+        <div className="buttons">
+          <button className="clipboard" onClick={() => handleClipboard("encryption")}>Copy to clipboard</button>
+          <button className="button" onClick={() => handlSubmit("encryption", "decryption")}>Encrypt</button>
+        </div>
       </div>
-      <div>
-        <h2>Decryption</h2>
+      <div className="input">
+        <h3>Decryption</h3>
         <input className={decryptionInputClass} id="decryption" onChange={() => setDecryptionInputClass("decryption")} />
-        <button className="clipboard" onClick={() => handleClipboard("decryption")}>Copy to clipboard</button>
-        <button className="button" onClick={() => handlSubmit("decryption", "encryption")}>Decrypt</button>
+        <div className="buttons">
+          <button className="clipboard" onClick={() => handleClipboard("decryption")}>Copy to clipboard</button>
+          <button className="button" onClick={() => handlSubmit("decryption", "encryption")}>Decrypt</button>
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  color: white;
 }
 
 .App-header {
@@ -11,6 +12,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+h1, h2, h3 {
+  color: #11db02;
 }
 
 .title {
@@ -25,6 +30,3 @@
   margin-right: 0px;
 }
 
-.input {
-  
-}
