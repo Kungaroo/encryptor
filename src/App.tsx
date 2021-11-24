@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Encryptor } from './Encryptor/Encryptor';
-import { caeser, atbash } from './Props';
+import { caeser, atbash, key } from './Props';
 
 const App: React.FC = () => {
 
-  const encryptions: any = [<Encryptor {...caeser} />, <Encryptor {...atbash} />];
-  const options = ["Caeser", "Atbash"]
+  const encryptions: any = [<Encryptor {...caeser} />, <Encryptor {...atbash} />, <Encryptor {...key} />];
+  const options = ["Caeser", "Atbash", "Key"]
   const [index, setIndex] = useState(0);
 
   const handleSelect = () => {

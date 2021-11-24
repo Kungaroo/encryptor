@@ -1,5 +1,5 @@
-import { caeserEncryption, atbashEncryption } from './Functions/EncryptionMethods';
-import { caeserDecryption, atbashDecryption } from './Functions/DecryptionMethods';
+import { caeserEncryption, atbashEncryption, keyEncryption } from './Functions/EncryptionMethods';
+import { caeserDecryption, atbashDecryption, keyDecryption } from './Functions/DecryptionMethods';
 import Props from './PropsInterface';
 
 export const caeser: Props = {
@@ -18,3 +18,10 @@ export const atbash: Props = {
   hasKey: false
 }
 
+export const key: Props = {
+  name: "Key",
+  encryption: keyEncryption,
+  decryption: keyDecryption,
+  hasOffset: false,
+  hasKey: true
+}

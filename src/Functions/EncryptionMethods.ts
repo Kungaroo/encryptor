@@ -6,7 +6,7 @@ export const caeserEncryption = (word: string, offset: number) => {
 
   offset = offset % 93;
 
-  for(let i=0;i<word.length;i++){
+  for(let i = 0; i < word.length; i++){
     charCode = word.charCodeAt(i)+offset;
 
     if (charCode > 126) charCode = charCode - 126 + 32;
@@ -21,8 +21,8 @@ export const caeserEncryption = (word: string, offset: number) => {
 export const atbashEncryption = (word: string) => {
   let ans = "";
 
-  for (let i=0;i<word.length;i++) {
-    ans+=String.fromCharCode((159-(word.charCodeAt(i))));
+  for (let i = 0; i < word.length; i++) {
+    ans += String.fromCharCode((159-(word.charCodeAt(i))));
   };
 
   return ans;
@@ -30,9 +30,13 @@ export const atbashEncryption = (word: string) => {
 
 export const keyEncryption = (word: string, key: string) => {
   let ans = "";
+  let j = 0;
 
-
-  for (let i=0; i<word.length; i++) {
-
+  for (let i = 0; i < word.length; i++) {
+    ans += word.charCodeAt(i) + key.charCodeAt(j);
+    j++;
+    if (j === key.length) j = 0;
   }
+
+  return ans;
 }

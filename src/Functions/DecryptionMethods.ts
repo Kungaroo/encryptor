@@ -27,3 +27,16 @@ export const atbashDecryption = (word: string) => {
 
   return ans;
 };
+
+export const keyDecryption = (word: String, key: String) => {
+  let ans = "";
+  let j = 0;
+
+  for (let i = 0; i < word.length; i++) {
+    ans += word.charCodeAt(i) - key.charCodeAt(j);
+    j++;
+    if (j === key.length) j = 0;
+  }
+
+  return ans;
+}

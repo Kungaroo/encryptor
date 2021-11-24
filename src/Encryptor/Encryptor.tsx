@@ -11,7 +11,8 @@ export const Encryptor: React.FC<Props> = (Props) => {
 
   const handlSubmit = (fromWhere: string, toWhere: string) => {
     const word = ((document.getElementById(`${fromWhere}`)) as HTMLInputElement).value;
-    let offset;
+    let offset, key;
+
     if(hasOffset){
       offset = parseInt(((document.getElementById("offset")) as HTMLInputElement).value);
 
@@ -22,7 +23,11 @@ export const Encryptor: React.FC<Props> = (Props) => {
         return;
       }
     }
-    
+
+    if(hasKey){
+      key = ((document.getElementById("offset")) as HTMLInputElement).value;
+    }
+
     let output;
 
     if(!isASCII(word)) {
@@ -34,6 +39,10 @@ export const Encryptor: React.FC<Props> = (Props) => {
       if(hasOffset) {
         if(fromWhere === "encryption") output = encryption(word, offset);
         else output = decryption(word, offset);
+      }
+      else if(hasKey){
+        if(fromWhere === "encryption") output = encryption(word, key);
+        else output = decryption(word, key);
       }
       else {
         if(fromWhere === "encryption") output = encryption(word);
@@ -69,7 +78,7 @@ export const Encryptor: React.FC<Props> = (Props) => {
       }
       <div className="input">
         <h3>Encryption</h3>
-        <input className={encryptionInputClass} id="encryption" onChange={() => setEncryptionInputClass("encryption")} />
+        <textarea className={encryptionInputClass} id="encryption" onChange={() => setEncryptionInputClass("encryption")} />
         <div className="buttons">
           <button className="clipboard" onClick={() => handleClipboard("encryption")}>Copy to clipboard</button>
           <button className="button" onClick={() => handlSubmit("encryption", "decryption")}>Encrypt</button>
@@ -77,7 +86,7 @@ export const Encryptor: React.FC<Props> = (Props) => {
       </div>
       <div className="input">
         <h3>Decryption</h3>
-        <input className={decryptionInputClass} id="decryption" onChange={() => setDecryptionInputClass("decryption")} />
+        <textarea className={decryptionInputClass} id="decryption" onChange={() => setDecryptionInputClass("decryption")} />
         <div className="buttons">
           <button className="clipboard" onClick={() => handleClipboard("decryption")}>Copy to clipboard</button>
           <button className="button" onClick={() => handlSubmit("decryption", "encryption")}>Decrypt</button>

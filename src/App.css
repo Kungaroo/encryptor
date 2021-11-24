@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'space_mono';
+  src: url('./Fonts/Space_Mono/SpaceMono-Regular.woff2') format('woff2'),
+       url('./Fonts/Space_Mono/SpaceMono-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'source_code_pro';
+  src: url('./Fonts/Source_Code_Pro/SourceCodePro-Regular.woff2') format('woff2'),
+       url('./Fonts/Source_Code_Pro/SourceCodePro-Regular.woff') format('woff');
+}
+
 .App {
   text-align: center;
   color: white;
@@ -5,7 +17,6 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,6 +27,8 @@
 
 h1, h2, h3 {
   color: #11db02;
+  /*font-family: 'source_code_pro';*/
+  font-family: 'space_mono';
 }
 
 .title {
@@ -29,4 +42,3 @@ h1, h2, h3 {
 .clipboard {
   margin-right: 0px;
 }
-
