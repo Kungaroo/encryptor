@@ -42,3 +42,12 @@ h1, h2, h3 {
 .clipboard {
   margin-right: 0px;
 }
+
+select {
+  background-color: black;
+  color: #11db02;
+  width: 20vw;
+  border-radius: 500px;
+  border: 2px solid #11db02;
+  padding: 4px;
+}

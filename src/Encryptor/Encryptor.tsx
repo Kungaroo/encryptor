@@ -25,7 +25,7 @@ export const Encryptor: React.FC<Props> = (Props) => {
     }
 
     if(hasKey){
-      key = ((document.getElementById("offset")) as HTMLInputElement).value;
+      key = ((document.getElementById("key")) as HTMLInputElement).value;
     }
 
     let output;
